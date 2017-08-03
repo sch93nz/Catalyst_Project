@@ -41,7 +41,7 @@ if __name__ == "__main__":
     PARSER.add_argument('-p', type=str, action='store', help='MySQL password', dest='password')
     PARSER.add_argument('-host', type=str, help='MySQL host', action='store', dest='host')
     ARGUMENTS = PARSER.parse_args()
-    DATABASE = MySQLdb.connect(host=ARGUMENTS.host ,user=ARGUMENTS.user, passwd=ARGUMENTS.password, db="Catalyst")
+    DATABASE = MySQLdb.connect(host=ARGUMENTS.host, user=ARGUMENTS.user, passwd=ARGUMENTS.password, db="Catalyst")
 
     if ARGUMENTS.create_table:
         Create_Tables(DATABASE)
