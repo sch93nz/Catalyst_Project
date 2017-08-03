@@ -17,13 +17,14 @@ def create_tables(db):
 
 def check_email(email):
     """This will return true if the email conforms to requirements"""
+    
     return False
 
 def main(args):
     """Main function of this file"""
-    file = open(args.file, 'r')
-    file.readline()
-    for line in file:
+    open_file = open(args.file, 'r')
+    open_file.readline() # this just spits out the headers
+    for line in open_file:
         split=line.split(",")
         split[0] = split[0].capitalize()
         split[1] = split[1].capitalize()
@@ -31,9 +32,6 @@ def main(args):
         if check:
             print split
         
-            
-    
-    
 
 if __name__ == "__main__":
 
@@ -42,7 +40,7 @@ if __name__ == "__main__":
                         , dest='file', required=True)
     PARSER.add_argument('--create_table', action='store_true', help='This will cause the MySQL'
                                                                     ' users table to be built(and '
-                                                                    'nofurther action will be taken)')
+                                                                    'no further action will be taken)')
     PARSER.add_argument('--dry_run', action='store_true', help='This will be used with the --file'
                                                                 'directive in the instance that we'
                                                                 ' want to run the script but not '
