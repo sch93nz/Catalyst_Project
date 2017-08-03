@@ -1,28 +1,39 @@
 """This is used to parse arguments """
 import argparse
-""" """
 import MySQLdb
 
-def Create_Tables(db):
+def create_tables(db):
     """Creates the tables in the database"""
-
-    print "Creating Table"
+    command = 'create table users (name VARCHAR(20),surname'\
+                'VARCHAR(20),email VARChAR(30) UNIQUE);'
+    if not DRY_RUN:
+        db.query(command)
+        db.commit()
+    else:
+        print command
+    print "Table Created"
     quit()
 
 
+def check_email(email):
+    """This will return true if the email conforms to requirements"""
+    return False
+
 def main(args):
     """Main function of this file"""
-    if args.dry_run:
-        print "dry run"
-    if str(args.user) != "None":
-        print "username= " + str(args.user)
-    if str(args.password) != "None":
-        print "password= " + str(args.password)
-    if args.create_table:
-        print "create_table"
-    if str(args.file) != "None":
-        print "file " + str(args.file)
-
+    file = open(args.file, 'r')
+    file.readline()
+    for line in file:
+        split=line.split(",")
+        split[0] = split[0].capitalize()
+        split[1] = split[1].capitalize()
+        check = check_email(split[2])
+        if check:
+            print split
+        
+            
+    
+    
 
 if __name__ == "__main__":
 
@@ -41,9 +52,15 @@ if __name__ == "__main__":
     PARSER.add_argument('-u', type=str, action='store', help='MySQL username', dest='user', required=True)
     PARSER.add_argument('-p', type=str, action='store', help='MySQL password', dest='password', required=True)
     PARSER.add_argument('-host', type=str, help='MySQL host', action='store', dest='host', required=True)
+
     ARGUMENTS = PARSER.parse_args()
+    global DRY_RUN
+    DRY_RUN = ARGUMENTS.dry_run
+
     if ARGUMENTS.create_table:
-        DATABASE =MySQLdb.connect(host=ARGUMENTS.host, user=ARGUMENTS.user, passwd=ARGUMENTS.password)
-        Create_Tables(DATABASE)
+        DATABASE = None
+        if not DRY_RUN:
+            DATABASE = MySQLdb.connect(host=ARGUMENTS.host, user=ARGUMENTS.user, passwd=ARGUMENTS.password)
+        create_tables(DATABASE)
 
     main(ARGUMENTS)
