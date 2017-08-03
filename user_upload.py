@@ -7,6 +7,7 @@ def Create_Tables(db):
     """Creates the tables in the database"""
 
     print "Creating Table"
+    quit()
 
 
 def main(args):
