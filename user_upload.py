@@ -14,13 +14,13 @@ def main(args):
     if args.dry_run:
         print "dry run"
     if str(args.user) != "None":
-        print "username=" + str(args.user)
+        print "username= " + str(args.user)
     if str(args.password) != "None":
-        print "password=" + str(args.password)
+        print "password= " + str(args.password)
     if args.create_table:
         print "create_table"
     if str(args.file) != "None":
-        print "file" + str(args.file)
+        print "file " + str(args.file)
 
 
 if __name__ == "__main__":
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     PARSER.add_argument('-host', type=str, help='MySQL host', action='store', dest='host', required=True)
     ARGUMENTS = PARSER.parse_args()
     if ARGUMENTS.create_table:
-        DATABASE =MySQLdb.connect(host=ARGUMENTS.host, user=ARGUMENTS.user, passwd=ARGUMENTS.password, db="Catalyst")
+        DATABASE =MySQLdb.connect(host=ARGUMENTS.host, user=ARGUMENTS.user, passwd=ARGUMENTS.password)
         Create_Tables(DATABASE)
 
     main(ARGUMENTS)
