@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     PARSER = argparse.ArgumentParser(description='Reads a CSV file and adds it to a database.')
     PARSER.add_argument('--file', type=str, help='This is the name of the CSV to be parsed.'
-                        , dest='file')
+                        , dest='file', required=True)
     PARSER.add_argument('--create_table', action='store_true', help='This will cause the MySQL'
                                                                     ' users table to be built(and '
                                                                     'nofurther action will be taken)')
@@ -37,13 +37,12 @@ if __name__ == "__main__":
                                                                 'insert into the DB. All other '
                                                                 'functions will be executed, but '
                                                                 "the database won't be altered.")
-    PARSER.add_argument('-u', type=str, action='store', help='MySQL username', dest='user')
-    PARSER.add_argument('-p', type=str, action='store', help='MySQL password', dest='password')
-    PARSER.add_argument('-host', type=str, help='MySQL host', action='store', dest='host')
+    PARSER.add_argument('-u', type=str, action='store', help='MySQL username', dest='user', required=True)
+    PARSER.add_argument('-p', type=str, action='store', help='MySQL password', dest='password', required=True)
+    PARSER.add_argument('-host', type=str, help='MySQL host', action='store', dest='host', required=True)
     ARGUMENTS = PARSER.parse_args()
-    DATABASE = MySQLdb.connect(host=ARGUMENTS.host, user=ARGUMENTS.user, passwd=ARGUMENTS.password, db="Catalyst")
-
     if ARGUMENTS.create_table:
+        DATABASE =MySQLdb.connect(host=ARGUMENTS.host, user=ARGUMENTS.user, passwd=ARGUMENTS.password, db="Catalyst")
         Create_Tables(DATABASE)
 
     main(ARGUMENTS)
