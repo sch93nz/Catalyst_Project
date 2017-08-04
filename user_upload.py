@@ -59,6 +59,8 @@ if __name__ == "__main__":
         DATABASE = None
         if not DRY_RUN:
             DATABASE = MySQLdb.connect(host=ARGUMENTS.host, user=ARGUMENTS.user, passwd=ARGUMENTS.password)
+        else:
+            print "MysQLdb.connect(host="ARGUMENTS.host" , user="ARGUMENTS.user" , passwd="ARGUMENTS.password" )"
         create_tables(DATABASE)
 
     main(ARGUMENTS)
