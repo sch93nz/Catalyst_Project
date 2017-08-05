@@ -4,7 +4,6 @@ import MySQLdb
 import csv
 from validate_email import validate_email
 
-DRY_RUN = False
 """I am using this so i don't have to put
 it in as a argument every were"""
 
@@ -22,7 +21,7 @@ def create_tables(db):
         except MySQLdb.Error, error:# MySql Error handling only
             db.rollback()
             db.close()
-            print "Error" + str(error)
+            print "Error " + str(error)
             return
     else:
         print command
@@ -73,7 +72,7 @@ def main(args, db):
                             db.rollback()
                             print "First= " + split[0] + " surn"\
                                   "ame= " + split[1] + " email= " + split[2]
-                            print "Error" + str(error)
+                            print "Error " + str(error)
                     else:
                         print value
             else:
@@ -120,7 +119,7 @@ if __name__ == "__main__":
                 main(ARGUMENTS, DATABASE)
             DATABASE.close()
         except MySQLdb.Error, error: # MySql Error handling only
-            print "Error" + str(error)
+            print "Error " + str(error)
     else:
         print "MysQLdb.connect(host=" + ARGUMENTS.host + " , u"\
         "ser=" +ARGUMENTS.user + " , passwd=" + ARGUMENTS.password + " db=catalyst )"
