@@ -29,8 +29,6 @@ def create_tables(db):
     else:
         print command
     print "Table Created"
-    if not db is None:
-        db.close()
     return
 
 def print_invalid_email(first, surname, email):
@@ -65,8 +63,8 @@ def main(args, db):
                 split[2] = split[2].lower().strip() #making the email lower case
                 check = check_email(split[2], split[0], split[1])
                 if check:
-                    value = "INSERT INTO users (name , surname, email ) VALUES " \
-                    "( '"  + split[0] + "', '" + split[1] + "', '" + split[2] +"' );"
+                    value = 'INSERT INTO users (name , surname, email ) VALUES ' \
+                    '( "'  + split[0] + '", "' + split[1] + '", "' + split[2] +'" );'
                     if not DRY_RUN:
                         try:
                             db.query(value)
