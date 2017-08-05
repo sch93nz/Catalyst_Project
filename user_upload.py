@@ -45,13 +45,18 @@ def main(args, db):
     open_file.readline() # this just spits out the headers
     for line in open_file:
         split = line.split(",")
-        if len(split[0]) > 0 and len(split[1]) > 0 and len(split[2]) > 2: # So this is here to stop empty fields from being inserted
-            split[0] = split[0].capitalize().strip() # capitalizing the first letter and lower casing the rest
-            split[1] = split[1].capitalize().strip() # capitalizing the first letter and lower casing the rest
+        if len(split[0]) > 0 and len(split[1]) > 0 and len(split[2]) > 2:
+            # So this is here to stop empty fields from being inserted
+            split[0] = split[0].capitalize().strip() # first name
+            # capitalizing the first letter and lower casing the rest
+            split[1] = split[1].capitalize().strip() # last name
+            # capitalizing the first letter and lower casing the rest
+
             split[2] = split[2].lower().strip() #making the email lower case
             check = check_email(split[2], split[0], split[1])
             if check:
-                value = "INSERT INTO users (name , surname, email ) VALUES ( '"  + split[0] + "', '" + split[1] + "', '" + split[2] +"' );"
+                value = "INSERT INTO users (name , surname, email ) VALUES " \
+                "( '"  + split[0] + "', '" + split[1] + "', '" + split[2] +"' );" 
                 if not DRY_RUN:
                     try:
                         db.query(value)
@@ -73,11 +78,11 @@ if __name__ == "__main__":
     PARSER.add_argument('--create_table', action='store_true', help='This will cause the MySQL'
                                                                     ' users table to be built(and '
                                                                     'no further action will be taken)')
-    PARSER.add_argument('--dry_run', action='store_true', help='This will be used with the --file'
-                                                                'directive in the instance that we'
-                                                                ' want to run the script but not '
-                                                                'insert into the DB. All other '
-                                                                'functions will be executed, but '
+    PARSER.add_argument('--dry_run', action='store_true', help='This will be used with the --file'\
+                                                                'directive in the instance that we'\
+                                                                ' want to run the script but not '\
+                                                                'insert into the DB. All other '\
+                                                                'functions will be executed, but '\
                                                                 "the database won't be altered.")
     PARSER.add_argument('-u', type=str, action='store', help='MySQL username', dest='user', required=True)
     PARSER.add_argument('-p', type=str, action='store', help='MySQL password', dest='password', required=True)
@@ -92,7 +97,9 @@ if __name__ == "__main__":
     if not DRY_RUN:
         try:
             print "connecting to database at host="+ARGUMENTS.host
-            DATABASE = MySQLdb.connect(host=ARGUMENTS.host, user=ARGUMENTS.user, passwd=ARGUMENTS.password)
+            DATABASE = MySQLdb.connect(host=ARGUMENTS.host,
+                                       user=ARGUMENTS.user,
+                                       passwd=ARGUMENTS.password)
         except MySQLdb.Error, error: # MySql Error handling only
             print str(error)
             quit()
