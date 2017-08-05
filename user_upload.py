@@ -16,7 +16,7 @@ def create_tables(db):
         name VARCHAR(20) , 
         surname VARCHAR(20), 
         email VARCHAR(256) UNIQUE
-        );'
+        );"""
     if not DRY_RUN:
         try:
             db.query(command)
