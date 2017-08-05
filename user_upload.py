@@ -7,31 +7,36 @@ def create_tables(db):
     command = 'create table users (name VARCHAR(20),surname'\
                 'VARCHAR(20),email VARChAR(30) UNIQUE);'
     if not DRY_RUN:
-        db.query(command)
-        db.commit()
+        try:
+            db.query(command)
+            db.commit()
+        except MySQLdb.Error, error:
+            print str(error)
+            quit()
     else:
         print command
     print "Table Created"
     quit()
 
 
-def check_email(email):
+def check_email(email, first, surname):
     """This will return true if the email conforms to requirements"""
-    
-    return False
+    if email.count("@") != 1 or len(email) > 256:
+        print "Email is not of legal format"
+        print "First="+first+" surname="+surname+" email="+email
+        return False
 
 def main(args):
     """Main function of this file"""
     open_file = open(args.file, 'r')
     open_file.readline() # this just spits out the headers
     for line in open_file:
-        split=line.split(",")
+        split = line.split(",")
         split[0] = split[0].capitalize()
         split[1] = split[1].capitalize()
-        check = check_email(split[2])
+        check = check_email(split[2], split[0], split[1])
         if check:
             print split
-        
 
 if __name__ == "__main__":
 
@@ -54,13 +59,18 @@ if __name__ == "__main__":
     ARGUMENTS = PARSER.parse_args()
     global DRY_RUN
     DRY_RUN = ARGUMENTS.dry_run
-
-    if ARGUMENTS.create_table:
-        DATABASE = None
-        if not DRY_RUN:
+    DATABASE = None
+    if not DRY_RUN:
+        try:
+            print "connecting to database"
             DATABASE = MySQLdb.connect(host=ARGUMENTS.host, user=ARGUMENTS.user, passwd=ARGUMENTS.password)
-        else:
-            print "MysQLdb.connect(host="ARGUMENTS.host" , user="ARGUMENTS.user" , passwd="ARGUMENTS.password" )"
+        except MySQLdb.Error, error:
+            print str(error)
+            quit()
+    else:
+        print "MysQLdb.connect(host=" + ARGUMENTS.host + " , u"\
+        "ser=" +ARGUMENTS.user + " , passwd=" + ARGUMENTS.password + " )"
+    if ARGUMENTS.create_table:
         create_tables(DATABASE)
 
     main(ARGUMENTS)
