@@ -18,12 +18,15 @@ def create_tables(db):
             db.query(command)
             db.commit()
         except MySQLdb.Error, error:# MySql Error handling only
+            db.rollback()
+            db.close()
             print str(error)
-            quit()
+            return
     else:
         print command
     print "Table Created"
-    quit()
+    db.close()
+    return 
 
 def print_invalid_email(first, surname, email):
     """This will just handles the print out as it will be used alot."""
@@ -73,6 +76,7 @@ def main(args, db):
         else:
             print "One of the feilds is to small"
             print split
+    open_file.close()
 
 if __name__ == "__main__":
     # argument passing
@@ -116,5 +120,6 @@ if __name__ == "__main__":
         "ser=" +ARGUMENTS.user + " , passwd=" + ARGUMENTS.password + " )"
     if ARGUMENTS.create_table:
         create_tables(DATABASE)
+        return
 
     main(ARGUMENTS, DATABASE)
