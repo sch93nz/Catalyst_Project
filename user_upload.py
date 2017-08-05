@@ -11,7 +11,7 @@ def create_tables(db):
     """Creates the tables in the database then quits
     If The table already exist my through a error which
     will be printed to standard out"""
-
+    table_removal = """drop table if exists users;"""
     command = """CREATE TABLE users ( 
         name VARCHAR(20) , 
         surname VARCHAR(20), 
@@ -19,6 +19,9 @@ def create_tables(db):
         );"""
     if not DRY_RUN:
         try:
+            db.query(table_removal)
+            db.commit()
+            print str(db.affected_rows())
             db.query(command)
             db.commit()
         except MySQLdb.Error, error:# MySql Error handling only
@@ -69,6 +72,7 @@ def main(args, db):
                         try:
                             db.query(value)
                             db.commit()
+                            print str(db.affected_rows())
                         except MySQLdb.Error, error:# MySql Error handling only
                             db.rollback()
                             print "First= " + split[0] + " surn"\
