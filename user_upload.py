@@ -2,6 +2,10 @@
 import argparse
 import MySQLdb
 
+DRY_RUN = False
+"""I am using this so i don't have to put
+it in as a argument every were"""
+
 def create_tables(db):
     """Creates the tables in the database then quits
     If The table already exist my through a error which
@@ -56,13 +60,13 @@ def main(args, db):
             check = check_email(split[2], split[0], split[1])
             if check:
                 value = "INSERT INTO users (name , surname, email ) VALUES " \
-                "( '"  + split[0] + "', '" + split[1] + "', '" + split[2] +"' );" 
+                "( '"  + split[0] + "', '" + split[1] + "', '" + split[2] +"' );"
                 if not DRY_RUN:
                     try:
                         db.query(value)
                         db.commit()
                     except MySQLdb.Error, error:# MySql Error handling only
-                        print "First= " + split[0] + " surname= " + split[1] + " email= " + split[2] 
+                        print "First= " + split[0] + " surname= " + split[1] + " email= " + split[2]
                         print str(error)
                 else:
                     print value
@@ -75,18 +79,22 @@ if __name__ == "__main__":
     PARSER = argparse.ArgumentParser(description='Reads a CSV file and adds it to a database.')
     PARSER.add_argument('--file', type=str, help='This is the name of the CSV to be parsed.'
                         , dest='file')
-    PARSER.add_argument('--create_table', action='store_true', help='This will cause the MySQL'
-                                                                    ' users table to be built(and '
-                                                                    'no further action will be taken)')
+    PARSER.add_argument('--create_table', action='store_true', help='This will cause the MySQL'\
+                                                                    ' users table to be built(and '\
+                                                                    'no further action will be '\
+                                                                    'taken)')
     PARSER.add_argument('--dry_run', action='store_true', help='This will be used with the --file'\
                                                                 'directive in the instance that we'\
                                                                 ' want to run the script but not '\
                                                                 'insert into the DB. All other '\
                                                                 'functions will be executed, but '\
                                                                 "the database won't be altered.")
-    PARSER.add_argument('-u', type=str, action='store', help='MySQL username', dest='user', required=True)
-    PARSER.add_argument('-p', type=str, action='store', help='MySQL password', dest='password', required=True)
-    PARSER.add_argument('-host', type=str, help='MySQL host', action='store', dest='host', required=True)
+    PARSER.add_argument('-u', type=str, action='store', help='MySQL username', dest='user',
+                        required=True)
+    PARSER.add_argument('-p', type=str, action='store', help='MySQL password', dest='password',
+                        required=True)
+    PARSER.add_argument('-host', type=str, help='MySQL host', action='store', dest='host',
+                        required=True)
 
     ARGUMENTS = PARSER.parse_args()
     global DRY_RUN
