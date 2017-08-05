@@ -22,7 +22,7 @@ def create_tables(db):
         except MySQLdb.Error, error:# MySql Error handling only
             db.rollback()
             db.close()
-            print str(error)
+            print "Error" + str(error)
             return
     else:
         print command
@@ -73,7 +73,7 @@ def main(args, db):
                             db.rollback()
                             print "First= " + split[0] + " surn"\
                                   "ame= " + split[1] + " email= " + split[2]
-                            print str(error)
+                            print "Error" + str(error)
                     else:
                         print value
             else:
@@ -120,7 +120,7 @@ if __name__ == "__main__":
                 main(ARGUMENTS, DATABASE)
             DATABASE.close()
         except MySQLdb.Error, error: # MySql Error handling only
-            print str(error)
+            print "Error" + str(error)
     else:
         print "MysQLdb.connect(host=" + ARGUMENTS.host + " , u"\
         "ser=" +ARGUMENTS.user + " , passwd=" + ARGUMENTS.password + " )"
