@@ -27,7 +27,8 @@ def create_tables(db):
     else:
         print command
     print "Table Created"
-    db.close()
+    if not db is None:
+        db.close()
     return
 
 def print_invalid_email(first, surname, email):
