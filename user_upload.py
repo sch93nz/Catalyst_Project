@@ -12,8 +12,8 @@ def create_tables(db):
     If The table already exist my through a error which
     will be printed to standard out"""
 
-    command = 'CREATE TABLE users ( name VARCHAR(20) , surname'\
-                'VARCHAR(20), email VARCHAR(256) UNIQUE);'
+    command = 'CREATE TABLE users ( \nname VARCHAR(20) , \nsurname'\
+                'VARCHAR(20), \nemail VARCHAR(256) UNIQUE\n);'
     if not DRY_RUN:
         try:
             db.query(command)
