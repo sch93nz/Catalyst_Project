@@ -1,11 +1,11 @@
-"""This is used to parse arguments """
+"""imports for this program"""
 import argparse
 import MySQLdb
 
 def create_tables(db):
     """Creates the tables in the database"""
     command = 'create table users (name VARCHAR(20),surname'\
-                'VARCHAR(20),email VARChAR(30) UNIQUE);'
+                'VARCHAR(20),email VARChAR(256) UNIQUE);'
     if not DRY_RUN:
         try:
             db.query(command)
@@ -21,9 +21,10 @@ def create_tables(db):
 
 def check_email(email, first, surname):
     """This will return true if the email conforms to requirements"""
+    
     if email.count("@") != 1 or len(email) > 256:
         print "Email is not of legal format"
-        print "First="+first+" surname="+surname+" email="+email
+        print "First= "+first+" surname= "+surname+" email= "+email
         return False
 
 def main(args):
@@ -32,8 +33,9 @@ def main(args):
     open_file.readline() # this just spits out the headers
     for line in open_file:
         split = line.split(",")
-        split[0] = split[0].capitalize()
-        split[1] = split[1].capitalize()
+        split[0] = split[0].capitalize() # capitalizing the first letter and lower casing the rest
+        split[1] = split[1].capitalize() # capitalizing the first letter and lower casing the rest
+        split[2] = split[2].lower() #making the email lower case
         check = check_email(split[2], split[0], split[1])
         if check:
             print split
@@ -42,7 +44,7 @@ if __name__ == "__main__":
 
     PARSER = argparse.ArgumentParser(description='Reads a CSV file and adds it to a database.')
     PARSER.add_argument('--file', type=str, help='This is the name of the CSV to be parsed.'
-                        , dest='file', required=True)
+                        , dest='file')
     PARSER.add_argument('--create_table', action='store_true', help='This will cause the MySQL'
                                                                     ' users table to be built(and '
                                                                     'no further action will be taken)')
