@@ -112,7 +112,7 @@ if __name__ == "__main__":
             print "connecting to database at host="+ARGUMENTS.host
             DATABASE = MySQLdb.connect(host=ARGUMENTS.host,
                                        user=ARGUMENTS.user,
-                                       passwd=ARGUMENTS.password)
+                                       passwd=ARGUMENTS.password,db="catalyst")
             if ARGUMENTS.create_table:
                 create_tables(DATABASE)
             else:
