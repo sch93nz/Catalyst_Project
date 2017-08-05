@@ -21,7 +21,6 @@ def create_tables(db):
         try:
             db.query(table_removal)
             db.commit()
-            print str(db.affected_rows())
             db.query(command)
             db.commit()
         except MySQLdb.Error, error:# MySql Error handling only
@@ -72,7 +71,6 @@ def main(args, db):
                         try:
                             db.query(value)
                             db.commit()
-                            print str(db.affected_rows())
                         except MySQLdb.Error, error:# MySql Error handling only
                             db.rollback()
                             print "First= " + split[0] + " surn"\
