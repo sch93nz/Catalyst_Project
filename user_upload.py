@@ -18,28 +18,44 @@ def create_tables(db):
     print "Table Created"
     quit()
 
+def print_invalid_email(first, surname, email):
+    """This will just handles the print out as it will be used alot."""
+    print "Email is not of legal format ( ",
+    print "First= "+first+" surname= "+surname+" email= "+email + " )"
 
 def check_email(email, first, surname):
     """This will return true if the email conforms to requirements"""
-    
-    if email.count("@") != 1 or len(email) > 256:
-        print "Email is not of legal format"
-        print "First= "+first+" surname= "+surname+" email= "+email
+    if email.count("@") != 1 or len(email) > 256 or email.count('..') != 0:
+        print_invalid_email(first, surname, email)
         return False
 
-def main(args):
+    parts = email.split('@')
+    if parts[1] == 'localhost':
+        print_invalid_email(first, surname, email)
+        return False
+    return True
+
+def main(args, db):
     """Main function of this file"""
     open_file = open(args.file, 'r')
     open_file.readline() # this just spits out the headers
     for line in open_file:
         split = line.split(",")
-        split[0] = split[0].capitalize() # capitalizing the first letter and lower casing the rest
-        split[1] = split[1].capitalize() # capitalizing the first letter and lower casing the rest
-        split[2] = split[2].lower() #making the email lower case
+        split[0] = split[0].capitalize().strip() # capitalizing the first letter and lower casing the rest
+        split[1] = split[1].capitalize().strip() # capitalizing the first letter and lower casing the rest
+        split[2] = split[2].lower().strip() #making the email lower case
         check = check_email(split[2], split[0], split[1])
         if check:
-            print split
-
+            value = "insert into users (name , surname, email ) values ( '"  + split[0] + "', '" + split[1] + "', '" + split[2] +"' );"
+        if not DRY_RUN:
+            try:
+                db.query(value)
+                db.commit()
+            except MySQLdb.Error, error:
+                print "First= " + split[0] + " surname= " + split[1] + " email= " + split[2] 
+                print str(error)
+        else:
+            print value
 if __name__ == "__main__":
 
     PARSER = argparse.ArgumentParser(description='Reads a CSV file and adds it to a database.')
@@ -75,4 +91,4 @@ if __name__ == "__main__":
     if ARGUMENTS.create_table:
         create_tables(DATABASE)
 
-    main(ARGUMENTS)
+    main(ARGUMENTS, DATABASE)
