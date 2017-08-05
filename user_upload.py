@@ -123,7 +123,7 @@ if __name__ == "__main__":
             print "Error" + str(error)
     else:
         print "MysQLdb.connect(host=" + ARGUMENTS.host + " , u"\
-        "ser=" +ARGUMENTS.user + " , passwd=" + ARGUMENTS.password + " )"
+        "ser=" +ARGUMENTS.user + " , passwd=" + ARGUMENTS.password + " db=catalyst )"
         if ARGUMENTS.create_table:
             create_tables(DATABASE)
         else:
