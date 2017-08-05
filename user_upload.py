@@ -1,6 +1,8 @@
 """imports for this program"""
 import argparse
 import MySQLdb
+import csv
+from validate_email import validate_email
 
 DRY_RUN = False
 """I am using this so i don't have to put
@@ -26,7 +28,7 @@ def create_tables(db):
         print command
     print "Table Created"
     db.close()
-    return 
+    return
 
 def print_invalid_email(first, surname, email):
     """This will just handles the print out as it will be used alot."""
@@ -36,47 +38,45 @@ def print_invalid_email(first, surname, email):
 def check_email(email, first, surname):
     """This will return true if the email conforms to requirements
     As more checks are thought of they will be put here"""
-    if email.count("@") != 1 or len(email) > 256 or email.count('..') != 0:
+    is_valid = validate_email(email)
+    if not is_valid:
         print_invalid_email(first, surname, email)
         return False
 
-    parts = email.split('@')
-    if parts[1] == 'localhost':
-        print_invalid_email(first, surname, email)
-        return False
     return True
 
 def main(args, db):
     """Main function of this file"""
-    open_file = open(args.file, 'r')
-    open_file.readline() # this just spits out the headers
-    for line in open_file:
-        split = line.split(",")
-        if len(split[0]) > 0 and len(split[1]) > 0 and len(split[2]) > 2:
-            # So this is here to stop empty fields from being inserted
-            split[0] = split[0].capitalize().strip() # first name
-            # capitalizing the first letter and lower casing the rest
-            split[1] = split[1].capitalize().strip() # last name
-            # capitalizing the first letter and lower casing the rest
+    with open(args.file, 'r') as open_file:
+        open_file.readline() # this just spits out the headers
+        reader = csv.reader(open_file)
+        for line in reader:
+            split = line
+            if len(split[0]) > 0 and len(split[1]) > 0 and len(split[2]) > 2:
+                # So this is here to stop empty fields from being inserted
+                split[0] = split[0].capitalize().strip() # first name
+                # capitalizing the first letter and lower casing the rest
+                split[1] = split[1].capitalize().strip() # last name
+                # capitalizing the first letter and lower casing the rest
 
-            split[2] = split[2].lower().strip() #making the email lower case
-            check = check_email(split[2], split[0], split[1])
-            if check:
-                value = "INSERT INTO users (name , surname, email ) VALUES " \
-                "( '"  + split[0] + "', '" + split[1] + "', '" + split[2] +"' );"
-                if not DRY_RUN:
-                    try:
-                        db.query(value)
-                        db.commit()
-                    except MySQLdb.Error, error:# MySql Error handling only
-                        print "First= " + split[0] + " surname= " + split[1] + " email= " + split[2]
-                        print str(error)
-                else:
-                    print value
-        else:
-            print "One of the feilds is to small"
-            print split
-    open_file.close()
+                split[2] = split[2].lower().strip() #making the email lower case
+                check = check_email(split[2], split[0], split[1])
+                if check:
+                    value = "INSERT INTO users (name , surname, email ) VALUES " \
+                    "( '"  + split[0] + "', '" + split[1] + "', '" + split[2] +"' );"
+                    if not DRY_RUN:
+                        try:
+                            db.query(value)
+                            db.commit()
+                        except MySQLdb.Error, error:# MySql Error handling only
+                            db.rollback()
+                            print "First= " + split[0] + " surn"\
+                                  "ame= " + split[1] + " email= " + split[2]
+                            print str(error)
+                    else:
+                        print value
+            else:
+                print "One of the feilds is to small " + str(split)
 
 if __name__ == "__main__":
     # argument passing
@@ -106,20 +106,26 @@ if __name__ == "__main__":
     # always passing a extra argument to every meathod
     DRY_RUN = ARGUMENTS.dry_run
     DATABASE = None
+    
     if not DRY_RUN:
         try:
             print "connecting to database at host="+ARGUMENTS.host
             DATABASE = MySQLdb.connect(host=ARGUMENTS.host,
                                        user=ARGUMENTS.user,
                                        passwd=ARGUMENTS.password)
+            if ARGUMENTS.create_table:
+                create_tables(DATABASE)
+            else:
+                main(ARGUMENTS, DATABASE)
+            DATABASE.close()
         except MySQLdb.Error, error: # MySql Error handling only
             print str(error)
-            quit()
     else:
         print "MysQLdb.connect(host=" + ARGUMENTS.host + " , u"\
         "ser=" +ARGUMENTS.user + " , passwd=" + ARGUMENTS.password + " )"
-    if ARGUMENTS.create_table:
-        create_tables(DATABASE)
-        return
-
-    main(ARGUMENTS, DATABASE)
+        if ARGUMENTS.create_table:
+            create_tables(DATABASE)
+        else:
+            main(ARGUMENTS, DATABASE)
+       
+   
