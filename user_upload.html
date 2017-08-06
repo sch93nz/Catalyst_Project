@@ -1,0 +1,65 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module user_upload</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>user_upload</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:///C:/users/matthew/documents/github/catalyst_project/user_upload.py">c:\users\matthew\documents\github\catalyst_project\user_upload.py</a></font></td></tr></table>
+    <p><tt>These&nbsp;Are&nbsp;the&nbsp;Modules&nbsp;that&nbsp;will&nbsp;be&nbsp;used.<br>
+&nbsp;<br>
+:import&nbsp;argparse:&nbsp;Used&nbsp;for&nbsp;parsing&nbsp;the&nbsp;arguemnts<br>
+:import&nbsp;csv:&nbsp;Used&nbsp;to&nbsp;handle&nbsp;the&nbsp;parsing&nbsp;of&nbsp;CSV&nbsp;files<br>
+:import&nbsp;MySQLdb:&nbsp;Used&nbsp;to&nbsp;handle&nbsp;the&nbsp;conenction&nbsp;to&nbsp;mySQL<br>
+:import&nbsp;validate_email:&nbsp;Used&nbsp;to&nbsp;handly&nbsp;the&nbsp;validation&nbsp;of&nbsp;the&nbsp;email&nbsp;address.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="MySQLdb.html">MySQLdb</a><br>
+</td><td width="25%" valign=top><a href="argparse.html">argparse</a><br>
+</td><td width="25%" valign=top><a href="csv.html">csv</a><br>
+</td><td width="25%" valign=top><a href="validate_email.html">validate_email</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-check_email"><strong>check_email</strong></a>(email, first, surname)</dt><dd><tt>This&nbsp;will&nbsp;return&nbsp;true&nbsp;if&nbsp;the&nbsp;email&nbsp;conforms&nbsp;to&nbsp;requirements.<br>
+As&nbsp;more&nbsp;checks&nbsp;are&nbsp;thought&nbsp;of&nbsp;they&nbsp;will&nbsp;be&nbsp;put&nbsp;here.<br>
+&nbsp;<br>
+:param&nbsp;email:&nbsp;This&nbsp;is&nbsp;the&nbsp;email&nbsp;that&nbsp;is&nbsp;to&nbsp;be&nbsp;checked<br>
+:param&nbsp;first:&nbsp;This&nbsp;is&nbsp;the&nbsp;First&nbsp;name&nbsp;for&nbsp;the&nbsp;entry<br>
+:param&nbsp;surname:&nbsp;this&nbsp;is&nbsp;the&nbsp;surname&nbsp;for&nbsp;the&nbsp;entry<br>
+:return:&nbsp;This&nbsp;will&nbsp;return&nbsp;true&nbsp;or&nbsp;false</tt></dd></dl>
+ <dl><dt><a name="-create_tables"><strong>create_tables</strong></a>(db)</dt><dd><tt>Creates&nbsp;the&nbsp;tables&nbsp;in&nbsp;the&nbsp;database&nbsp;then&nbsp;quits<br>
+If&nbsp;The&nbsp;table&nbsp;already&nbsp;exist&nbsp;my&nbsp;through&nbsp;a&nbsp;error&nbsp;which<br>
+will&nbsp;be&nbsp;printed&nbsp;to&nbsp;standard&nbsp;out.<br>
+&nbsp;<br>
+:param&nbsp;db:&nbsp;The&nbsp;Database&nbsp;object<br>
+:return:&nbsp;This&nbsp;will&nbsp;return&nbsp;nothing</tt></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>(arg)</dt><dd><tt>This&nbsp;is&nbsp;the&nbsp;main&nbsp;meathod&nbsp;and&nbsp;will&nbsp;handle&nbsp;all&nbsp;the&nbsp;different&nbsp;paths<br>
+&nbsp;<br>
+:param&nbsp;arg:&nbsp;holds&nbsp;all&nbsp;the&nbsp;arguments</tt></dd></dl>
+ <dl><dt><a name="-parsing_file"><strong>parsing_file</strong></a>(args, db)</dt><dd><tt>Main&nbsp;function&nbsp;of&nbsp;this&nbsp;file&nbsp;this&nbsp;is&nbsp;were<br>
+the&nbsp;passing&nbsp;of&nbsp;each&nbsp;line&nbsp;will&nbsp;be&nbsp;done<br>
+&nbsp;<br>
+:param&nbsp;args:&nbsp;A&nbsp;argument&nbsp;object&nbsp;that&nbsp;holds&nbsp;all&nbsp;data<br>
+:param&nbsp;db:&nbsp;This&nbsp;is&nbsp;the&nbsp;connection&nbsp;to&nbsp;the&nbsp;MySQL&nbsp;database<br>
+:return:&nbsp;This&nbsp;returns&nbsp;nothing</tt></dd></dl>
+ <dl><dt><a name="-print_invalid_email"><strong>print_invalid_email</strong></a>(first, surname, email)</dt><dd><tt>This&nbsp;will&nbsp;just&nbsp;handles&nbsp;the&nbsp;print&nbsp;out&nbsp;as&nbsp;it&nbsp;will&nbsp;be&nbsp;used&nbsp;repetitively.<br>
+&nbsp;<br>
+:param&nbsp;email:&nbsp;This&nbsp;is&nbsp;the&nbsp;email&nbsp;that&nbsp;is&nbsp;to&nbsp;be&nbsp;checked<br>
+:param&nbsp;first:&nbsp;This&nbsp;is&nbsp;the&nbsp;First&nbsp;name&nbsp;for&nbsp;the&nbsp;entry<br>
+:param&nbsp;surname:&nbsp;this&nbsp;is&nbsp;the&nbsp;surname&nbsp;for&nbsp;the&nbsp;entry</tt></dd></dl>
+</td></tr></table>
+</body></html>

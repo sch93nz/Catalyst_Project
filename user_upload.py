@@ -1,16 +1,23 @@
-"""imports for this program"""
+"""These Are the Modules that will be used.
+
+:import argparse: Used for parsing the arguemnts
+:import csv: Used to handle the parsing of CSV files
+:import MySQLdb: Used to handle the conenction to mySQL
+:import validate_email: Used to handly the validation of the email address.
+"""
 import argparse
 import csv
 import MySQLdb
-from validate_email import validate_email
-
-"""I am using this so i don't have to put
-it in as a argument every were"""
+import validate_email
 
 def create_tables(db):
     """Creates the tables in the database then quits
     If The table already exist my through a error which
-    will be printed to standard out"""
+    will be printed to standard out.
+   
+    :param db: The Database object
+    :return: This will return nothing
+    """
     table_removal = """DROP TABLE IF EXISTS users;"""
     command = """CREATE TABLE users (
         name VARCHAR(20) , 
@@ -35,24 +42,43 @@ def create_tables(db):
     return
 
 def print_invalid_email(first, surname, email):
-    """This will just handles the print out as it will be used alot."""
+    """This will just handles the print out as it will be used repetitively.
+
+    :param email: This is the email that is to be checked
+    :param first: This is the First name for the entry
+    :param surname: this is the surname for the entry
+
+    """
     print "Email is not of legal format ( ",
     print "First= "+first+" surname= "+surname+" email= "+email + " )"
 
 def check_email(email, first, surname):
-    """This will return true if the email conforms to requirements
-    As more checks are thought of they will be put here"""
-    is_valid = validate_email(email)
+    """This will return true if the email conforms to requirements.
+    As more checks are thought of they will be put here.
+
+    :param email: This is the email that is to be checked
+    :param first: This is the First name for the entry
+    :param surname: this is the surname for the entry
+    :return: This will return true or false
+    """
+    is_valid = validate_email.validate_email(email)
     if not is_valid:
-        #print_invalid_email(first, surname, email)
+        print_invalid_email(first, surname, email)
         return False
     split = email.split('@')
     if 'localhost' in split[1]:
+        print_invalid_email(first, surname, email)
         return False
     return True
 
-def main(args, db):
-    """Main function of this file"""
+def parsing_file(args, db):
+    """Main function of this file this is were
+    the passing of each line will be done
+
+    :param args: A argument object that holds all data
+    :param db: This is the connection to the MySQL database
+    :return: This returns nothing
+    """
     with open(args.file, 'r') as open_file:
         open_file.readline() # this just spits out the headers
         reader = csv.reader(open_file)
@@ -84,6 +110,34 @@ def main(args, db):
             else:
                 print "One of the feilds is to small " + str(split)
 
+def main(arg):
+    """This is the main meathod and will handle all the
+    different paths the program will take
+
+    :param arg: holds all the arguments
+    """
+    database = None
+    if not DRY_RUN:
+        try:
+            print "connecting to database at host=" + arg.host
+            database = MySQLdb.connect(host=arg.host,
+                                       user=arg.user,
+                                       passwd=arg.password, db="catalyst")
+            if arg.create_table:
+                create_tables(database)
+            else:
+                parsing_file(arg, database)
+            database.close()
+        except MySQLdb.Error, error: # MySql Error handling only
+            print "Error " + str(error)
+    else:
+        print "MysQLdb.connect(host=" + arg.host + " , u"\
+        "ser=" +arg.user + " , passwd=" + arg.password + " db='catalyst' )"
+        if arg.create_table:
+            create_tables(database)
+        else:
+            parsing_file(arg, database)
+
 if __name__ == "__main__":
     # argument passing
     PARSER = argparse.ArgumentParser(description='Reads a CSV file and adds it to a database.')
@@ -112,26 +166,4 @@ if __name__ == "__main__":
     # I am using a global variable because it is less confusing then
     # always passing a extra argument to every meathod
     DRY_RUN = ARGUMENTS.dry_run
-    DATABASE = None
-
-    if not DRY_RUN:
-        try:
-            print "connecting to database at host="+ARGUMENTS.host
-            DATABASE = MySQLdb.connect(host=ARGUMENTS.host,
-                                       user=ARGUMENTS.user,
-                                       passwd=ARGUMENTS.password, db="catalyst")
-            if ARGUMENTS.create_table:
-                create_tables(DATABASE)
-            else:
-                main(ARGUMENTS, DATABASE)
-            DATABASE.close()
-        except MySQLdb.Error, error: # MySql Error handling only
-            print "Error " + str(error)
-    else:
-        print "MysQLdb.connect(host=" + ARGUMENTS.host + " , u"\
-        "ser=" +ARGUMENTS.user + " , passwd=" + ARGUMENTS.password + " db='catalyst' )"
-        if ARGUMENTS.create_table:
-            create_tables(DATABASE)
-        else:
-            main(ARGUMENTS, DATABASE)
-   
+    main(ARGUMENTS)

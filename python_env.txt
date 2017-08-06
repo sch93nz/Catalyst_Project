@@ -9,9 +9,10 @@ validate-email==1.3
 
 mysql version used:
 
-mysql  Ver 14.14 Distrib 5.7.19, for Linux (x86_64) using  EditLine wrapper
+mysql Ver 14.14 Distrib 5.7.19, for Linux (x86_64) using EditLine wrapper
 
 Ubuntu version:
+
 No LSB modules are available.
 Distributor ID: Ubuntu
 Description:    Ubuntu 16.04.3 LTS
