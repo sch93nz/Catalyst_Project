@@ -20,7 +20,6 @@ def create_tables(db):
     if not DRY_RUN:
         try:
             db.query(table_removal)
-            print db.affected_rows
             db.commit()
             db.query(command)
             db.commit()
@@ -89,9 +88,10 @@ if __name__ == "__main__":
     PARSER.add_argument('--file', type=str, help='This is the name of the CSV to be parsed.'
                         , dest='file')
     PARSER.add_argument('--create_table', action='store_true', help='This will cause the MySQL'\
-                                                                    ' users table to be built(and '\
+                                                                    ' users table to be built ( and '\
                                                                     'no further action will be '\
-                                                                    'taken)')
+                                                                    'taken). This will Drop the'\
+                                                                    'if the table aready exist')
     PARSER.add_argument('--dry_run', action='store_true', help='This will be used with the --file'\
                                                                 'directive in the instance that we'\
                                                                 ' want to run the script but not '\
