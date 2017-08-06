@@ -11,8 +11,8 @@ def create_tables(db):
     """Creates the tables in the database then quits
     If The table already exist my through a error which
     will be printed to standard out"""
-    table_removal = """drop table if exists users;"""
-    command = """CREATE TABLE users ( 
+    table_removal = """DROP TABLE IF EXISTS users;"""
+    command = """CREATE TABLE users (
         name VARCHAR(20) , 
         surname VARCHAR(20), 
         email VARCHAR(256) UNIQUE
@@ -29,6 +29,7 @@ def create_tables(db):
             print "Error " + str(error)
             return
     else:
+        print table_removal
         print command
     print "Table Created"
     return
@@ -130,5 +131,4 @@ if __name__ == "__main__":
             create_tables(DATABASE)
         else:
             main(ARGUMENTS, DATABASE)
-       
    
