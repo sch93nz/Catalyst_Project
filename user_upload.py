@@ -1,7 +1,7 @@
 """imports for this program"""
 import argparse
-import MySQLdb
 import csv
+import MySQLdb
 from validate_email import validate_email
 
 """I am using this so i don't have to put
@@ -44,9 +44,11 @@ def check_email(email, first, surname):
     As more checks are thought of they will be put here"""
     is_valid = validate_email(email)
     if not is_valid:
-        print_invalid_email(first, surname, email)
+        #print_invalid_email(first, surname, email)
         return False
-
+    split = email.split('@')
+    if 'localhost' in split[1]:
+        return False
     return True
 
 def main(args, db):
@@ -111,13 +113,13 @@ if __name__ == "__main__":
     # always passing a extra argument to every meathod
     DRY_RUN = ARGUMENTS.dry_run
     DATABASE = None
-    
+
     if not DRY_RUN:
         try:
             print "connecting to database at host="+ARGUMENTS.host
             DATABASE = MySQLdb.connect(host=ARGUMENTS.host,
                                        user=ARGUMENTS.user,
-                                       passwd=ARGUMENTS.password,db="catalyst")
+                                       passwd=ARGUMENTS.password, db="catalyst")
             if ARGUMENTS.create_table:
                 create_tables(DATABASE)
             else:
