@@ -20,6 +20,7 @@ def create_tables(db):
     if not DRY_RUN:
         try:
             db.query(table_removal)
+            print db.affected_rows
             db.commit()
             db.query(command)
             db.commit()
