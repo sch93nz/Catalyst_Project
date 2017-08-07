@@ -20,7 +20,7 @@ def create_tables(db):
     """
     table_removal = """DROP TABLE IF EXISTS users;"""
     command = """CREATE TABLE users (
-        id MEDIUMINT(8) UNSIDNED NOT NULL AUTO_INCREMENT,
+        id MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
         name VARCHAR(20) , 
         surname VARCHAR(20), 
         email VARCHAR(256) UNIQUE
