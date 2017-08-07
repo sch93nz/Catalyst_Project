@@ -1,0 +1,269 @@
+commit d794dce6851ed64ecf9fe9bd7d5dfa41332b97e9
+Author: sch93nz <sch93nz@hotmail.com>
+Date:   Mon Aug 7 18:06:04 2017 +1200
+
+    emergency commit battery low
+
+commit 32dc5b377b9d8cf184b429f8013a7c1b8916af14
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Mon Aug 7 13:02:11 2017 +1200
+
+    fixing of minor bugs that showed up when i made the changes
+
+commit 55b285fce1df7571273a6e0dba612812163ecf65
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Mon Aug 7 13:01:26 2017 +1200
+
+    fixing of minor bugs that showed up when i made the changes
+
+commit c4f418241734fee235de83e37292d3c0ed9124cd
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Mon Aug 7 13:00:30 2017 +1200
+
+    fixing of minor bugs that showed up when i made the changes
+
+commit eef1525adf670080791d6ceb4e952fc06a441492
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Mon Aug 7 12:57:43 2017 +1200
+
+    a minor change that i thought of
+
+commit 933cf7be6f107dbafff0b293e4209a13f4c3182c
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Mon Aug 7 12:56:03 2017 +1200
+
+    a minor change that i thought of
+
+commit c7bb70bd276abe08459424e77251e41df13e1170
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Mon Aug 7 12:53:16 2017 +1200
+
+    a minor change that i thought of
+
+commit e5c17ee69002e45898b7352843ad2fb5b2338bc3
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Mon Aug 7 12:52:38 2017 +1200
+
+    a minor change that i thought of
+
+commit afe104893bb2e42564793919e0dfcdc2d0f04fee
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Mon Aug 7 12:50:49 2017 +1200
+
+    a minor change that i thought of
+
+commit 5658ca9e97fe4375bf9596c7f20671caeb31f3d6
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Mon Aug 7 12:47:56 2017 +1200
+
+    a minor change that i thought of
+
+commit f9a91927a8990c012e22111cb5f4b376ce6a38dc
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Mon Aug 7 12:04:55 2017 +1200
+
+    Last update
+
+commit 65f813779a45e90cf2c7b4663e9137622cf9d37a
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Mon Aug 7 11:43:24 2017 +1200
+
+     adding some documentation file
+
+commit 1098476f1be70f2fd08051bc442a3a259867d66d
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 17:09:15 2017 +1200
+
+    add soem unit testing to fix some of the problems
+
+commit c2e72e2a1856f941be98c27afb3a7cbe36e1d34d
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 12:22:51 2017 +1200
+
+    trying something
+
+commit 098b7ced1be8abf3169997dd6131af6946edf06c
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 12:15:30 2017 +1200
+
+    trying something
+
+commit 2d970288964e9b52c6ca306c2367c1e75c03d2db
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 12:09:51 2017 +1200
+
+    some minor modifications
+
+commit ebd4123d362bd9a0966b6f266696dd2c72fc8928
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:55:42 2017 +1200
+
+    some minor modifications
+
+commit 6e3a42a043d9c5db943f6aa4ca73123eb5e33bbd
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:54:35 2017 +1200
+
+    some minor modifications
+
+commit 4c458bfe1a6e62696161f244f57ef2552c7edf4a
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:48:16 2017 +1200
+
+    well that was a weird problem
+
+commit b2f676bf3080d0cf236d32ab9163a6a23d4e2a68
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:40:36 2017 +1200
+
+    ok that was a mistake that is being fixed
+
+commit ef2d833901f7197c60ad83c7f5a67b547b9caad4
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:39:41 2017 +1200
+
+    fixing some minor errors
+
+commit 95c595a5f7ab5c0e361e2b7896161ce1936c0574
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:38:35 2017 +1200
+
+    fixing some minor errors
+
+commit bf694fc9852fbb2bdf16e797d1c2cddd36e20477
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:36:29 2017 +1200
+
+    fixing some minor errors
+
+commit ec032f4396b5f6f724e248f8fec9cad82037bc8c
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:35:44 2017 +1200
+
+    fixing some minor errors
+
+commit aff2cbeefae248b7c8665921edb74028997f0bb3
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:34:17 2017 +1200
+
+    fixing some minor errors
+
+commit dd6ccb620a1423d72cfba0ca9bfeb9bbed6325b1
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:32:44 2017 +1200
+
+    fixing some minor errors
+
+commit 006815c62c173c785bb25e83c72366211a086ae6
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:30:59 2017 +1200
+
+    fixing some minor errors
+
+commit ef1c8a059cd26c50f6c8dd6c00677313af4886ca
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:29:26 2017 +1200
+
+    fixing some minor errors
+
+commit 783c92c53b1570eff565b62bfadee2b3818050f9
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sun Aug 6 10:24:52 2017 +1200
+
+    made some modifications so that if there were any errors the program would handle them.
+
+commit 10a1e6b50a59eb602c7f961b8cc1115afb7cba68
+Author: sch93nz <sch93nz@hotmail.com>
+Date:   Sat Aug 5 19:06:17 2017 +1200
+
+    Think of how to handle weird errors and what to do when it exits and finds weird texts.
+
+commit 5aded1a4fbf1feb315720a9535006af83f432f4d
+Author: sch93nz <sch93nz@hotmail.com>
+Date:   Sat Aug 5 18:37:06 2017 +1200
+
+    just minor modifications and some comments.
+
+commit 2b263ec12225bddea6d23ffe29993402896fd8a1
+Author: sch93nz <sch93nz@hotmail.com>
+Date:   Sat Aug 5 17:44:29 2017 +1200
+
+    just some more comments.
+
+commit 7d6f6db82d22cdcbce33610f62ed8d420c89f5f1
+Author: sch93nz <sch93nz@hotmail.com>
+Date:   Sat Aug 5 17:35:48 2017 +1200
+
+    testing different user names and adding comments to the code. Have not tested any of this code one mySQL yet as i am not working at home.
+
+commit 3f14829c76e22cdf4589f80e24e3b3db1d3203e9
+Author: sch93nz <sch93nz@hotmail.com>
+Date:   Sat Aug 5 16:53:06 2017 +1200
+
+    just try to increase the strength of the error checking and making sure that it doesn't break in weird ways
+
+commit dc267524376dfc1d529ec860ca8bc463bca2536b
+Author: sch93nz <sch93nz@hotmail.com>
+Date:   Sat Aug 5 15:56:38 2017 +1200
+
+    think i have made a basic checker
+
+commit 6c42d40461ac37e431f209d4012ad73ab08a459a
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sat Aug 5 12:33:35 2017 +1200
+
+    added some error catching and soem of the email checking code
+
+commit 9711dba242c13eb46b418bccc7d2ca3b87bdf7b7
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Sat Aug 5 11:48:07 2017 +1200
+
+    Just adding the complete the second task.
+
+commit c04cbe4dda2f7f4789fa83d604d6cfc52b275208
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Thu Aug 3 22:21:37 2017 +1200
+
+     just add a comment and fixing some formatting.
+
+commit c9a99fd5e841b5ef80f975fd8855ec6888a82844
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Thu Aug 3 22:10:00 2017 +1200
+
+    made some progress with the passing the csv file and believe i got the connection working but only localy. I believe its firewall settings that are stopping it otherwise.
+
+commit 25796999cc8ef61a0caae34f248f9cc707eaa344
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Thu Aug 3 21:16:09 2017 +1200
+
+    may have got it fixed
+
+commit 6a0bd53e400b43112240be9e6396173ec6c1e26b
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Thu Aug 3 21:14:29 2017 +1200
+
+     trying to get it to log in on the server i keep getting (1044, 'Access denied for user')
+
+commit 2ca4a1a9b3537063ac7a10d651e86cf96405e640
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Thu Aug 3 20:52:53 2017 +1200
+
+    so fixed some errors and am testing it on the server
+
+commit a11e321413cc8a8d0c639e174e17cb69c9b0580e
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Thu Aug 3 20:27:29 2017 +1200
+
+    just a quick push to test on the local machine.for got to save teh latest copy
+
+commit dcaa34df3c18750d9c14f2d6bdb326033d80c837
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Thu Aug 3 20:27:10 2017 +1200
+
+    just a quick push to test on the local machine.
+
+commit 81e0550504f0e839be47a72e6016661b5ef2ca6a
+Author: Matthew <sch93nz@hotmail.com>
+Date:   Thu Aug 3 12:25:53 2017 +1200
+
+    First commit of everything i have done. Mostly jsut setting up the argparser and getting the enviroment correct.
