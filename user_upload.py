@@ -14,7 +14,7 @@ def create_tables(db):
     """Creates the tables in the database then quits
     If The table already exist my through a error which
     will be printed to standard out.
-   
+
     :param db: The Database object
     :return: This will return nothing
     """
