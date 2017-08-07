@@ -81,6 +81,9 @@ def parsing_file(args, db):
     :param db: This is the connection to the MySQL database
     :return: This returns nothing
     """
+    if args.file is None:
+        print "No File was Supplied."
+        return
     with open(args.file, 'r') as open_file:
         open_file.readline() # this just spits out the headers
         reader = csv.reader(open_file)
