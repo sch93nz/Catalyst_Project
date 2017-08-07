@@ -11,6 +11,8 @@ mysql version used:
 
 mysql Ver 14.14 Distrib 5.7.19, for Linux (x86_64) using EditLine wrapper
 
+the Database name is catalyst
+
 Ubuntu version:
 
 No LSB modules are available.
