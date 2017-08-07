@@ -84,36 +84,39 @@ def parsing_file(args, db):
     if args.file is None:
         print "No File was Supplied."
         return
-    with open(args.file, 'r') as open_file:
-        open_file.readline() # this just spits out the headers
-        reader = csv.reader(open_file)
-        for line in reader:
-            split = line
-            if len(split[0]) > 0 and len(split[1]) > 0 and len(split[2]) > 2:
-                # So this is here to stop empty fields from being inserted
-                split[0] = split[0].capitalize().strip() # first name
-                # capitalizing the first letter and lower casing the rest
-                split[1] = split[1].capitalize().strip() # last name
-                # capitalizing the first letter and lower casing the rest
+    try:
+        with open(args.file, 'r') as open_file:
+            open_file.readline() # this just spits out the headers
+            reader = csv.reader(open_file)
+            for line in reader:
+                split = line
+                if len(split[0]) > 0 and len(split[1]) > 0 and len(split[2]) > 2:
+                    # So this is here to stop empty fields from being inserted
+                    split[0] = split[0].capitalize().strip() # first name
+                    # capitalizing the first letter and lower casing the rest
+                    split[1] = split[1].capitalize().strip() # last name
+                    # capitalizing the first letter and lower casing the rest
 
-                split[2] = split[2].lower().strip() #making the email lower case
-                check = check_email(split[2], split[0], split[1])
-                if check:
-                    value = 'INSERT INTO users (name , surname, email ) VALUES ' \
-                    '( "'  + split[0] + '", "' + split[1] + '", "' + split[2] +'" );'
-                    if not DRY_RUN:
-                        try:
-                            db.query(value)
-                            db.commit()
-                        except MySQLdb.Error, error:# MySql Error handling only
-                            db.rollback()
-                            print "First= " + split[0] + " surn"\
-                                  "ame= " + split[1] + " email= " + split[2]
-                            print "Error " + str(error)
-                    else:
-                        print value
-            else:
-                print "One of the feilds is to small " + str(split)
+                    split[2] = split[2].lower().strip() #making the email lower case
+                    check = check_email(split[2], split[0], split[1])
+                    if check:
+                        value = 'INSERT INTO users (name , surname, email ) VALUES ' \
+                        '( "'  + split[0] + '", "' + split[1] + '", "' + split[2] +'" );'
+                        if not DRY_RUN:
+                            try:
+                                db.query(value)
+                                db.commit()
+                            except MySQLdb.Error, error:# MySql Error handling only
+                                db.rollback()
+                                print "First= " + split[0] + " surn"\
+                                      "ame= " + split[1] + " email= " + split[2]
+                                print "Error " + str(error)
+                        else:
+                            print value
+                else:
+                    print "One of the feilds is to small " + str(split)
+    except IOError,er:
+        print er
 
 def main(arg):
     """This is the main meathod and will handle all the
