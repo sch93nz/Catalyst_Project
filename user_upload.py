@@ -56,13 +56,19 @@ def print_invalid_email(first, surname, email):
 
 def check_email(email, first, surname):
     """This will return true if the email conforms to requirements.
-    As more checks are thought of they will be put here.
+    As more checks are thought of they will be put here. This
+    email checker will not check to see if the emails are real
+    as i am unsure that the emails supplied are real so i didn't
+    turn that on in the check statement
 
     :param email: This is the email that is to be checked
     :param first: This is the First name for the entry
     :param surname: this is the surname for the entry
     :return: This will return true or false
     """
+    # if you want this to check the domain and weather the email is real
+    # Uncomment the line below and comment and comment the line below that
+    # is_valid = validate_email.validate_email(email ,check_mx=True ,verify=True)
     is_valid = validate_email.validate_email(email)
     if not is_valid:
         print_invalid_email(first, surname, email)
